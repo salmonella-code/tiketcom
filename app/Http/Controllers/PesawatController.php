@@ -60,7 +60,7 @@ class PesawatController extends Controller
 			'logo_plane' => $nama_file,
         ]);
         
-        return redirect()->route('pesawat.index');
+        return redirect()->route('pesawat.index')->with('success', 'created items successfully.');
     }
 
     /**
@@ -113,7 +113,7 @@ class PesawatController extends Controller
         try{
             $item = Plane::findOrFail($id);
             $item->update($data);
-            return redirect()->route('pesawat.index');
+            return redirect()->route('pesawat.index')->with('success', 'edit items successfully.');
         }
         catch (\Exception $e){
             return redirect()->route('pesawat.index');
@@ -133,6 +133,6 @@ class PesawatController extends Controller
         $items = Plane::findOrFail($id);
         $items->delete();
         File::delete('plane_logo/'.$items->logo_plane);
-        return redirect()->route('pesawat.index');
+        return redirect()->route('pesawat.index')->with('success', 'delete items successfully.');
     }
 }

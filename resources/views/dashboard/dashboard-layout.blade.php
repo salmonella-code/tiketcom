@@ -13,7 +13,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-primary">
-            <a class="navbar-brand text-light" href="index.html"><img src="{{ asset('img/logoWhite.webp') }}" alt="" width="100"></a>
+            <a class="navbar-brand text-light" href="{{ url('/admin') }}"><img src="{{ asset('img/logoWhite.webp') }}" alt="" width="100"></a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars text-light"></i></button>
 
             <!-- Navbar-->

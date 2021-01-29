@@ -48,7 +48,7 @@ class BannerControllerMobile extends Controller
 		$file->move($tujuan_upload,$nama_file);
 
         bannerMobile::create(['bannerMobile' => $nama_file,]);
-        return redirect()->route('bannerMobile.index');
+        return redirect()->route('bannerMobile.index')->with('success', 'created items successfully.');
     }
 
     /**
@@ -96,6 +96,6 @@ class BannerControllerMobile extends Controller
         $items = bannerMobile::findOrFail($id);
         $items->delete();
         File::delete('bannerMobile/'.$items->banner);
-        return redirect()->route('bannerMobile.index');
+        return redirect()->route('bannerMobile.index')->with('success', 'delete successfully.');
     }
 }

@@ -59,7 +59,7 @@ class promoController extends Controller
 			'picture_promotions' => $nama_file,
         ]);
         
-        return redirect()->route('promotion.index');
+        return redirect()->route('promotion.index')->with('success', 'created items successfully.');
     }
 
     /**
@@ -111,7 +111,7 @@ class promoController extends Controller
         try{
             $item = promo::findOrFail($id);
             $item->update($data);
-            return redirect()->route('promotion.index');
+            return redirect()->route('promotion.index')->with('success', 'edit items successfully.');
         }
         catch (\Exception $e){
             return redirect()->route('promotion.index');
@@ -129,6 +129,6 @@ class promoController extends Controller
         $items = promo::findOrFail($id);
         $items->delete();
         File::delete('promo/'.$items->picture_promotions);
-        return redirect()->route('promotion.index');
+        return redirect()->route('promotion.index')->with('success', 'delete items successfully.');
     }
 }

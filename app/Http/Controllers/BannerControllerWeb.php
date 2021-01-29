@@ -47,7 +47,7 @@ class BannerControllerWeb extends Controller
 		$file->move($tujuan_upload,$nama_file);
 
         bannerWeb::create(['banner' => $nama_file,]);
-        return redirect()->route('bannerWeb.index');
+        return redirect()->route('bannerWeb.index')->with('success', 'created items successfully.');
     }
 
     /**
@@ -95,6 +95,6 @@ class BannerControllerWeb extends Controller
         $items = bannerWeb::findOrFail($id);
         $items->delete();
         File::delete('bannerWeb/'.$items->banner);
-        return redirect()->route('bannerWeb.index');
+        return redirect()->route('bannerWeb.index')->with('success', 'delete successfully.');
     }
 }

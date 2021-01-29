@@ -2,6 +2,9 @@
 
 @section('dashboard-content')
 
-<h1>home</h1>
-
+<div class="container text-center">
+    <img src="{{ asset('img/logo.webp') }}" alt="" class="w-25">
+    <h1>Welcome to TiketCom Dasboard</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus hic ducimus labore natus, nisi facilis, nobis fuga aliquam nesciunt libero sunt a error pariatur ut eveniet maxime assumenda unde quos.</p>
+</div>
 @endsection
