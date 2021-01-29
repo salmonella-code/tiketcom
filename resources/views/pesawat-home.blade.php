@@ -207,17 +207,17 @@
 
     <!-- simple tiket -->
     <div class="simple-tiket pt-5">
-        <h2 class="text-center font-weight-bold">Kemudahan itu ada tiketnya!</h2>
+        <h2 class="text-center font-weight-bold">Partner Maskapai</h2>
         <div class="container mb-5">
             <div class="card mx-auto mt-5" style="width: 1180px;">
                 <div class="card-body">
-                    @foreach ($promosi->chunk(3) as $items)
+                    @foreach ($plane->chunk(3) as $items)
                     <div class="row mt-3 mb-5">
                         @foreach($items as $item)
                         <div class="col">
-                           <img src="{{ url('/promosi/'.$item->picture_promotions) }}" alt="" width="100" height="82" class=" d-flex mx-auto">                        
-                            <h5 class=" text-center font-weight-bold mt-4 mb-2">{{ $item->title_promotions }}</h5>
-                            <p class="text-center text-muted">{{ $item->description_promotions }}</p>
+                            <img src="{{ url('/plane_logo/'.$item->logo_plane) }}" alt="" width="100" height="82" class=" d-flex mx-auto" data-toggle="tooltip" data-placement="top" title="{{ $item->brand_plane }}">                        
+                            <h5 class=" text-center font-weight-bold mt-4 mb-2">{{ $item->brand_plane }}</h5>
+                            <p class="text-center text-muted">{{ $item->description_plane }}</p>
                         </div>
                         @endforeach
                     </div>

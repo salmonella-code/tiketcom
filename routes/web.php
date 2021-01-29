@@ -11,22 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::resource('/', 'homeController');
+Route::resource('/pesawat', 'homePesawatController');
 Route::get('/admin', function(){
     return view('dashboard.index');
 });
-
-Route::get('/admin/promosi', function(){
-    return view('dashboard.promosi');
-});
-
-Route::get('/admin/pesawat', function(){
-    return view('dashboard.pesawat');
-});
-
 Route::get('/admin/hotel', function(){
     return view('dashboard.hotel');
 });
+Route::resource('/admin/pesawat', 'PesawatController');
+Route::resource('/admin/bannerWeb', 'BannerControllerWeb');
+Route::resource('/admin/bannerMobile', 'BannerControllerMobile');
+Route::resource('/admin/promotion', 'promoController');

@@ -31,6 +31,7 @@
                 <nav class="sb-sidenav accordion bg-info text-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            {{-- user --}}
                             <a class="nav-link collapsed text-light" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon text-light"><i class="fas fa-user"></i></div>
                                 User
@@ -42,7 +43,23 @@
                                     <a class="nav-link  text-light" href="{{ url('costumer') }}">Costumer</a>
                                 </nav>
                             </div>
-                            <a class="nav-link text-light" href="/admin/promosi">
+                            {{-- //user --}}
+
+                            {{-- banner --}}
+                            <a class="nav-link collapsed text-light" href="#" data-toggle="collapse" data-target="#Banner" aria-expanded="false" aria-controls="Banner">
+                                <div class="sb-nav-link-icon text-light"><i class="fas fa-images"></i></div>
+                                Banner
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="Banner" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link  text-light" href="{{ url('/admin/bannerWeb') }}">Desktop</a>
+                                    <a class="nav-link  text-light" href="{{ url('/admin/bannerMobile') }}">Mobile</a>
+                                </nav>
+                            </div>
+                            {{-- //banner --}}
+
+                            <a class="nav-link text-light" href="/admin/promotion">
                                 <div class="sb-nav-link-icon text-light"><i class="fas fa-gift text-light"></i></div>
                                 Promosi
                             </a>

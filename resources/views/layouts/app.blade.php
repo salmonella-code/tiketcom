@@ -84,7 +84,7 @@
         <a class="navbar-brand pl-2" href="#"><img src="img/logo.webp" width="182" height="40"></a>
         <div class="collapse navbar-collapse">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="#">Tiket Pesawat</a>
+                <a class="nav-item nav-link" href="/pesawat">Tiket Pesawat</a>
                 <a class="nav-item nav-link" href="#">Hotel</a>
                 <a class="nav-item nav-link" href="#">To Do</a>
                 <a class="nav-item nav-link" href="#">Tiket Kereta Api</a>
@@ -145,15 +145,11 @@
                     <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/m1.webp" alt="..." class="d-block mx-auto" width="320" height="200">
+                    @foreach($data as $key => $items)
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                        <img src="{{ url('/bannerMobile/'.$items->bannerMobile) }}" alt="..." class="d-block mx-auto" width="320" height="200">
                     </div>
-                    <div class="carousel-item">
-                        <img src="img/m2.webp" alt="..." class="d-block mx-auto" width="320" height="200">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/m3.webp" alt="..." class="d-block mx-auto" width="320" height="200">
-                    </div>
+                    @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -228,7 +224,8 @@
 
                 <div class="covid-mobile-items mr-3">
                     <img src="img/covid2.webp" alt="" width="152" height="184" class="rounded">
-                    <p class="h6 font-weight-bold mb-0">Covid Test dengan Kimia Homecare24</p>
+                    <p class="h6 font-weight-bold mb-0">Covid Test dengan Kimia Homecare24
+                    </p>
                     <p class="m-0"><small class="text-muted">Beli vouchernrya disini!</small></p>
                 </div>
             </div>
@@ -265,27 +262,13 @@
                     <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item p-5 active">
-                        <img src="img/customer-service.webp" alt="..." class="d-block mx-auto" width="100" height="80">
-                        <p class="h6 font-weight-bold text-center">24/7 Customer Care</p>
-                        <p class="text-muted text-center"> <small>Melalui pelayanan 24/7 Customer Care, kami akan selalu ada buat kamu. Dapatkan bantuan untuk
-                            pemesanan hotel dan tiketmu dengan pelayanan 24/7 Customer Care dari tiket.com.</small></p>
+                    @foreach($promosi as $key => $items)
+                    <div class="carousel-item p-5 {{$key == 0 ? 'active' : '' }}">
+                        <img src="{{ url('/promosi/'.$items->picture_promotions) }}" alt="..." class="d-block mx-auto" width="100" height="80">
+                        <p class="h6 font-weight-bold text-center">{{ $items->title_promotions }}</p>
+                        <p class="text-muted text-center"> <small>{{ $items->description_promotions }}</small></p>
                     </div>
-                    <div class="carousel-item p-5">
-                        <img src="img/easy-ticket.webp" alt="..." class="d-block mx-auto" width="100" height="80">
-
-                        <p class="h6 font-weight-bold text-center">Mudahnya Pesan Tiket dan Hotel</p>
-                        <p class="text-muted text-center"><small>Pesan tiket sekaligus hotel dengan mudah dan cepat. Tidak perlu risau, hanya dengan satu
-                            sentuhan jari, tiket dan hotel yang kamu butuhkan bisa didapatkan dengan mudah.</small></p>
-
-                    </div>
-                    <div class="carousel-item p-5">
-                        <img src="img/elite-rewards.webp" alt="..." class="d-block mx-auto" width="100" height="80">
-
-                        <p class="h6 font-weight-bold text-center">Benefit tiket Elite Rewards</p>
-                        <p class="text-muted text-center"><small>Dapatkan benefit tiket Elite Rewards berupa tiket Points yang bisa kamu tukarkan dengan
-                            diskon. Juga berbagai benefit eksklusif sesuai produk yang kamu beli!</small></p>
-                    </div>
+                    @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -298,6 +281,35 @@
             </div>
         </div>
         <!-- jumbotron carausel 2 -->
+
+        <!-- jumbotron carausel 3 -->
+        <div class="jumbotron-mobile jumbotron-fluid bg-light">
+            <div id="carouselExampleIndicators4" class="carousel slide" data-ride="carousel" >
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators4" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators4" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators4" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @foreach($plane as $key => $planes)
+                    <div class="carousel-item p-5 {{$key == 0 ? 'active' : '' }}">
+                        <img src="{{ url('/plane_logo/'.$planes->logo_plane) }}" alt="..." class="d-block mx-auto" width="100" height="80">
+                        <p class="h6 font-weight-bold text-center">{{ $planes->brand_plane }}</p>
+                        <p class="text-muted text-center"> <small>{{ $planes->description_plane }}</small></p>
+                    </div>
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators4" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators4" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- jumbotron carausel 3 -->
 
         <footer class="p-3 mb-4" style="background-color: #35405a;">
             <img src="img/logoWhite.webp" alt="" width="95" class="mb-2">
