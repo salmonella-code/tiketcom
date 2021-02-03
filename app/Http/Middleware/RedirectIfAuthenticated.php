@@ -2,6 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\bannerMobile;
+use App\bannerWeb;
+use App\Plane;
+use App\promo;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -24,4 +28,5 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+
 }

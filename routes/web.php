@@ -16,9 +16,12 @@
 // });
 Route::resource('/', 'homeController');
 Route::resource('/pesawat', 'homePesawatController');
-Route::get('/admin', function(){
-    return view('dashboard.index');
-});
+// Route::get('/admin', function(){
+//     return view('dashboard.index');
+// });
+
+
+
 Route::get('/admin/hotel', function(){
     return view('dashboard.hotel');
 });
@@ -26,3 +29,8 @@ Route::resource('/admin/pesawat', 'PesawatController');
 Route::resource('/admin/bannerWeb', 'BannerControllerWeb');
 Route::resource('/admin/bannerMobile', 'BannerControllerMobile');
 Route::resource('/admin/promotion', 'promoController');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+

@@ -94,8 +94,33 @@
             <div class="navbar-nav d-flex align-items-baseline">
                 <a class="nav-item nav-link font-weight-bold text-dark" href="#">Elit Rewards</a>
                 <a class="nav-item nav-link font-weight-bold text-dark" href="#">Cek Order</a>
-                <a class="nav-item nav-link font-weight-bold text-dark mr-3" href="#">Login</a>
-                <div class="btn rounded-pill shadow font-weight-bold">Daftar</div>
+                @guest
+                <a class="nav-item nav-link font-weight-bold text-dark mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                @if (Route::has('register'))
+                    <a class="btn rounded-pill shadow font-weight-bold" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+                @endif
+                @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->role == 'admin')                         
+                                        <a href="#" class="dropdown-item">Dashboard</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                @endguest
             </div>
         </div>
     </nav>
@@ -105,7 +130,7 @@
     @yield('content')
     {{-- //content --}}
 
-
+{{-- 
     <!-- mobile view -->
     <div class="mobile container-mobile">
         <!-- navbar top -->
@@ -331,7 +356,7 @@
 
     </div>
     <!-- //mobile view -->
-
+ --}}
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
