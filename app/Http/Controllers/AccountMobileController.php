@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\bannerMobile;
-use App\bannerWeb;
-use App\Plane;
-use App\promo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class homeController extends Controller
+class AccountMobileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +14,12 @@ class homeController extends Controller
      */
     public function index()
     {
-        $data = bannerMobile::all();
-        $bannerWeb = bannerWeb::all();
-        $promosi = promo::all();
-        $plane = Plane::all();
-
-
-        return view('index',  compact('data', 'bannerWeb', 'promosi' ,'plane'));
+        if(Auth::user()){
+            return view('mobile.account');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**

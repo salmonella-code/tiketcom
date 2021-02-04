@@ -34,7 +34,7 @@
             </div>
             <!-- //navbar covid -->
 
-        <main class="py-4">
+        <main class="py-4" style="background-image: url('{{ asset('img/bg.webp') }}')">
             @yield('content')
         </main>
     </div>

@@ -39,10 +39,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
+    public function showLoginForm()
     {
         $promosi = promo::all();
-        dd('$promosi')->exit();
+        // dd('$promosi');
+        // exit();
         return view('auth.login', compact('promosi'));
     }
 

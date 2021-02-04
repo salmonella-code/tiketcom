@@ -1,11 +1,31 @@
-@extends('layouts.app')
+@extends('layoutsLogin.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-7">
+        <img src="{{ asset('img/logo.webp') }}" alt="" class="w-25 ">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6 d-none d-sm-block">
+            <div class="card shadow border-0 rounded-lg mt-5">
+                <div class="card-body">
+                    <p class="h5 text-center font-weight-bold">Gabung dan gunakan fitur mudahnya.</p>
+                    @foreach($promosi as $key => $items)
+                    <div class="container-card d-flex align-items-center border-bottom mb-3">
+                        <img src="{{ url('/promosi/'.$items->picture_promotions) }}" alt="image" width="90" height="60">
+                        <div class="text ml-2">
+                            <p class="font-weight-bold mb-0">{{ $items->title_promotions }}</p>
+                            <p class="mb-0 pb-3">{{ Str::words($items->description_promotions, '10') }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">Membuat Akun</h3></div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -50,10 +70,13 @@
                             </div>
                         </div>
                         <div class="form-group mt-4 mb-0">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                {{ __('Register') }}
+                            <button type="submit" class="btn btn-warning text-white font-weight-bold btn-block rounded-pill">
+                                {{ __('Daftar') }}
                             </button></div>
                     </form>
+                    <div class="d-flex justify-content-center mt-3 border-top">
+                        <a href="{{ route('login') }}" class="pt-2"><small>Sudah punya akun ?</small></a>
+                    </div>
                 </div>
             </div>
         </div>

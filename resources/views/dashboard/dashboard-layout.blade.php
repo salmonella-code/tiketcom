@@ -21,7 +21,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw text-light"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -31,6 +38,10 @@
                 <nav class="sb-sidenav accordion bg-info text-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            <a class="nav-link text-light" href="{{ url('/') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-home text-light"></i></div>
+                                Beranda
+                            </a>
                             {{-- user --}}
                             <a class="nav-link collapsed text-light" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon text-light"><i class="fas fa-user"></i></div>
@@ -39,8 +50,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link  text-light" href="{{ url('admin2') }}">Admin</a>
-                                    <a class="nav-link  text-light" href="{{ url('costumer') }}">Costumer</a>
+                                    <a class="nav-link  text-light" href="{{ url('/admin/AdminUser') }}">Admin</a>
+                                    <a class="nav-link  text-light" href="{{ url('/admin/CustomerUser') }}">Customer</a>
                                 </nav>
                             </div>
                             {{-- //user --}}
@@ -67,15 +78,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-plane text-light"></i></div>
                                 Pesawat
                             </a>
-                            <a class="nav-link text-light" href="/admin/hotel">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hotel text-light"></i></div>
-                                Hotel
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <h4 class="font-weight-bold text-capitalize">{{ Auth::user()->name }}</h4>
                     </div>
                 </nav>
             </div>

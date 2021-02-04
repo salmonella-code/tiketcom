@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\promo;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -27,4 +28,12 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function showResetForm()
+    {
+        $promosi = promo::all();
+        // dd('$promosi');
+        // exit();
+        return view('auth.reset', compact('promosi'));
+    }
 }

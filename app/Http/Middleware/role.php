@@ -15,9 +15,10 @@ class role
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->is_admin == 1){
+        if(auth()->user()->role == 'admin'){
             return $next($request);
         }
-        return redirect()->route('/.index');
+   
+        return redirect('home')->with('error',"You don't have admin access.");
     }
 }

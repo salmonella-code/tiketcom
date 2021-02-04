@@ -14,23 +14,25 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
+
+use App\User;
+
 Route::resource('/', 'homeController');
+Route::resource('/AccountMobile', 'AccountMobileController');
 Route::resource('/pesawat', 'homePesawatController');
-// Route::get('/admin', function(){
-//     return view('dashboard.index');
-// });
-
-
-
-Route::get('/admin/hotel', function(){
-    return view('dashboard.hotel');
-});
-Route::resource('/admin/pesawat', 'PesawatController');
-Route::resource('/admin/bannerWeb', 'BannerControllerWeb');
-Route::resource('/admin/bannerMobile', 'BannerControllerMobile');
-Route::resource('/admin/promotion', 'promoController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['role'])->group(function (){
+    Route::get('/admin', function(){
+        return view('dashboard.index');
+    });
+    Route::resource('/admin/pesawat', 'PesawatController');
+    Route::resource('/admin/bannerWeb', 'BannerControllerWeb');
+    Route::resource('/admin/bannerMobile', 'BannerControllerMobile');
+    Route::resource('/admin/promotion', 'promoController');
+    Route::resource('/admin/AdminUser', 'AdminUserController');
+    Route::resource('/admin/CustomerUser', 'CustomerUserController');
+});
 
 
